@@ -21,7 +21,12 @@
     </properties>
 
     <dependencies>
-
+        <!--Java Fx -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>11</version>
+        </dependency>
         <!-- Conector de MySQL -->
         <dependency>
             <groupId>com.mysql</groupId>
@@ -33,7 +38,6 @@
 
     <build>
         <plugins>
-
             <!-- Compilador Java -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
