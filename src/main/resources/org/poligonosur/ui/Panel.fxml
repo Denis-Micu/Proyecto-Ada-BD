@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<!-- Panel principal -->
+<BorderPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.poligonosur.ui.PanelPantalla">
+   <top>
+      <!-- Cabecera -->
+      <HBox alignment="CENTER_LEFT" prefHeight="60.0">
+         <padding><Insets left="40.0" right="40.0" /></padding>
+         <Label text="Gestor de suscripciones" />
+      </HBox>
+   </top>
+   <center>
+      <VBox spacing="10.0">
+         <padding><Insets bottom="16.0" left="40.0" right="40.0" top="16.0" /></padding>
+
+         <!-- Título y fecha -->
+         <HBox alignment="CENTER_LEFT">
+            <Label text="Mis suscripciones" />
+            <Pane HBox.hgrow="ALWAYS" />
+            <Label fx:id="lblFecha" />
+         </HBox>
+
+         <!-- Saludo y acciones -->
+         <HBox alignment="CENTER_LEFT" spacing="12.0">
+            <Label fx:id="lblSaludo" />
+            <Pane HBox.hgrow="ALWAYS" />
+            <Button onAction="#nuevaSuscripcion" text="Nueva suscripción" />
+            <Button onAction="#servicios" text="Servicios" />
+            <Button onAction="#salir" text="Salir" />
+         </HBox>
+
+         <!-- Resumen de gastos -->
+         <HBox spacing="24.0">
+            <Label fx:id="lblGastoMensual" maxWidth="Infinity" HBox.hgrow="ALWAYS" />
+            <Label fx:id="lblGastoAnual" maxWidth="Infinity" HBox.hgrow="ALWAYS" />
+         </HBox>
+
+         <!-- Filtros -->
+         <HBox spacing="24.0">
+            <VBox spacing="4.0">
+               <Label text="Categoría" />
+               <ComboBox fx:id="cmbCategoria" onAction="#filtrar" prefWidth="240.0" />
+            </VBox>
+            <VBox spacing="4.0">
+               <Label text="Estado" />
+               <ComboBox fx:id="cmbEstado" onAction="#filtrar" prefWidth="240.0" />
+            </VBox>
+         </HBox>
+
+         <!-- Tarjetas de suscripciones con flechas -->
+         <HBox alignment="CENTER" spacing="4.0">
+            <Button onAction="#anterior" text="&lt;" />
+            <ScrollPane fx:id="scrollTarjetas" fitToHeight="true" vbarPolicy="NEVER" HBox.hgrow="ALWAYS">
+               <HBox fx:id="cajaTarjetas" spacing="16.0" />
+            </ScrollPane>
+            <Button onAction="#siguiente" text="&gt;" />
+         </HBox>
+
+         <!-- Avisos de próximos cobros -->
+         <VBox fx:id="cajaAvisos" spacing="4.0" />
+      </VBox>
+   </center>
+</BorderPane>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<!-- Detalle de suscripción -->
+<BorderPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.poligonosur.ui.DetallePantalla">
+   <top>
+      <!-- Cabecera -->
+      <HBox alignment="CENTER_LEFT" prefHeight="60.0">
+         <padding><Insets left="40.0" right="40.0" /></padding>
+         <Label text="Gestor de suscripciones" />
+      </HBox>
+   </top>
+   <center>
+      <VBox spacing="12.0">
+         <padding><Insets bottom="24.0" left="40.0" right="40.0" top="24.0" /></padding>
+         <Label text="Detalle de suscripción" />
+
+         <!-- Resumen de la suscripción -->
+         <VBox spacing="8.0">
+            <padding><Insets bottom="16.0" left="16.0" right="16.0" top="16.0" /></padding>
+            <HBox>
+               <Label fx:id="lblServicio" />
+               <Pane HBox.hgrow="ALWAYS" />
+               <Label fx:id="lblEstado" />
+            </HBox>
+            <HBox spacing="56.0">
+               <VBox prefWidth="210.0" spacing="4.0">
+                  <Label text="Importe" />
+                  <Label fx:id="lblImporte" />
+               </VBox>
+               <VBox prefWidth="210.0" spacing="4.0">
+                  <Label text="Periodicidad" />
+                  <Label fx:id="lblPeriodicidad" />
+               </VBox>
+               <VBox prefWidth="210.0" spacing="4.0">
+                  <Label text="Próximo cobro" />
+                  <Label fx:id="lblProximoCobro" />
+               </VBox>
+            </HBox>
+         </VBox>
+
+         <!-- Acciones -->
+         <HBox spacing="12.0">
+            <Button onAction="#registrarPago" text="Registrar pago" />
+            <Button onAction="#modificar" text="Modificar" />
+            <Button fx:id="btnPausar" onAction="#pausar" text="Pausar" />
+            <Button onAction="#cancelar" text="Cancelar" />
+         </HBox>
+
+         <!-- Historial de pagos -->
+         <Label text="Historial de pagos" />
+         <TableView fx:id="tablaPagos" VBox.vgrow="ALWAYS">
+            <columns>
+               <TableColumn fx:id="colFecha" prefWidth="340.0" text="Fecha" />
+               <TableColumn fx:id="colImporte" prefWidth="280.0" text="Importe" />
+               <TableColumn fx:id="colEstado" prefWidth="300.0" text="Estado" />
+            </columns>
+         </TableView>
+
+         <Button onAction="#volver" text="Volver" />
+      </VBox>
+   </center>
+</BorderPane>
