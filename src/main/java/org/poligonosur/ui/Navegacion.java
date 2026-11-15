@@ -23,7 +23,10 @@ public class Navegacion {
         try {
             FXMLLoader loader = new FXMLLoader(Navegacion.class.getResource(fxml));
             Parent raiz = loader.load();
-            ventana.setScene(new Scene(raiz, 1000, 700));
+            Scene escena = new Scene(raiz, 1000, 700);
+            // La misma hoja de estilos para todas las pantallas
+            escena.getStylesheets().add(Navegacion.class.getResource("estilos.css").toExternalForm());
+            ventana.setScene(escena);
             return loader.getController();
         } catch (IOException e) {
             throw new RuntimeException("No se pudo abrir la pantalla " + fxml, e);

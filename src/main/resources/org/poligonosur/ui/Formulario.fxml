@@ -16,7 +16,7 @@
             fx:controller="org.poligonosur.ui.FormularioPantalla">
    <top>
       <!-- Cabecera -->
-      <HBox alignment="CENTER_LEFT" prefHeight="60.0">
+      <HBox alignment="CENTER_LEFT" prefHeight="60.0" styleClass="cabecera">
          <padding><Insets left="40.0" right="40.0" /></padding>
          <Label text="Gestor de suscripciones" />
       </HBox>
@@ -24,7 +24,7 @@
    <center>
       <VBox spacing="10.0">
          <padding><Insets bottom="16.0" left="40.0" right="40.0" top="16.0" /></padding>
-         <Label fx:id="lblTitulo" />
+         <Label fx:id="lblTitulo" styleClass="titulo" />
 
          <!-- Formulario -->
          <VBox maxWidth="720.0" spacing="20.0">
@@ -69,7 +69,7 @@
 
             <!-- Acciones -->
             <HBox spacing="12.0">
-               <Button defaultButton="true" onAction="#guardar" text="Guardar" />
+               <Button defaultButton="true" onAction="#guardar" styleClass="boton-principal" text="Guardar" />
                <Button cancelButton="true" onAction="#cancelar" text="Cancelar" />
             </HBox>
          </VBox>

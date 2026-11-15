@@ -15,7 +15,7 @@
             fx:controller="org.poligonosur.ui.LoginPantalla">
    <top>
       <!-- Cabecera -->
-      <HBox alignment="CENTER_LEFT" prefHeight="60.0">
+      <HBox alignment="CENTER_LEFT" prefHeight="60.0" styleClass="cabecera">
          <padding><Insets left="40.0" right="40.0" /></padding>
          <Label text="Gestor de suscripciones" />
       </HBox>
@@ -23,9 +23,9 @@
    <center>
       <VBox alignment="CENTER">
          <!-- Formulario de acceso -->
-         <VBox maxWidth="420.0" spacing="24.0">
+         <VBox maxHeight="-Infinity" maxWidth="420.0" spacing="24.0" styleClass="caja">
             <padding><Insets bottom="32.0" left="32.0" right="32.0" top="32.0" /></padding>
-            <Label text="Inicio de sesión" />
+            <Label styleClass="titulo" text="Inicio de sesión" />
             <VBox spacing="8.0">
                <Label text="Email" />
                <TextField fx:id="txtEmail" />
@@ -34,9 +34,9 @@
                <Label text="Contraseña" />
                <PasswordField fx:id="txtPassword" />
             </VBox>
-            <Label fx:id="lblError" />
-            <Button defaultButton="true" maxWidth="Infinity" onAction="#entrar" text="Entrar" />
-            <Hyperlink onAction="#registrarse" text="¿No tienes cuenta? Regístrate" />
+            <Label fx:id="lblError" managed="false" styleClass="error" visible="false" wrapText="true" />
+            <Button defaultButton="true" maxWidth="Infinity" onAction="#entrar" styleClass="boton-principal" text="Entrar" />
+            <Hyperlink maxWidth="Infinity" alignment="CENTER" onAction="#registrarse" text="¿No tienes cuenta? Regístrate" />
          </VBox>
       </VBox>
    </center>

@@ -1,6 +1,7 @@
 package org.poligonosur.ui;
 
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -82,7 +83,10 @@ public class PanelPantalla {
             mostrarTarjetas();
 
             for (Suscripcion s : resumenController.listarProximosCobros()) {
-                cajaAvisos.getChildren().add(new Label(resumenController.textoAviso(s)));
+                Label aviso = new Label(resumenController.textoAviso(s));
+                aviso.getStyleClass().add("aviso");
+                aviso.setMaxWidth(Double.MAX_VALUE);
+                cajaAvisos.getChildren().add(aviso);
             }
         } catch (ValidacionException | DatosException e) {
             Navegacion.mostrarError(e.getMessage());
@@ -119,16 +123,36 @@ public class PanelPantalla {
         }
     }
 
-    // Tarjeta de una suscripción. Al pulsarla se abre el detalle.
+    // Tarjeta de una suscripción, como en el diseño. Al pulsarla se abre el detalle.
     private VBox crearTarjeta(Suscripcion s) {
-        VBox tarjeta = new VBox(4,
-                new Label(s.getNombreServicio()),
-                new Label(Formato.importe(s.getImporte())),
-                new Label(Formato.texto(s.getPeriodicidad())),
-                new Label("Próximo pago"),
-                new Label(Formato.fecha(s.getProximoPago())),
-                new Label("Estado: " + Formato.texto(s.getEstado())));
+        Label nombre = new Label(s.getNombreServicio());
+        nombre.getStyleClass().add("subtitulo");
+
+        Label importe = new Label(Formato.importe(s.getImporte()));
+        importe.getStyleClass().add("tarjeta-importe");
+        Label periodicidad = new Label(Formato.texto(s.getPeriodicidad()));
+        periodicidad.getStyleClass().add("secundario");
+
+        Label textoProximo = new Label("Próximo pago");
+        textoProximo.getStyleClass().add("secundario");
+        Label proximo = new Label(Formato.fecha(s.getProximoPago()));
+        proximo.getStyleClass().add("dato");
+
+        Label textoEstado = new Label("Estado");
+        textoEstado.getStyleClass().add("secundario");
+        Label estado = new Label(Formato.texto(s.getEstado()));
+        estado.getStyleClass().add("etiqueta-estado");
+        HBox filaEstado = new HBox(8, textoEstado, estado);
+        filaEstado.setAlignment(Pos.CENTER_LEFT);
+
+        VBox tarjeta = new VBox(6,
+                nombre,
+                new VBox(2, importe, periodicidad),
+                new VBox(2, textoProximo, proximo),
+                filaEstado);
+        tarjeta.getStyleClass().addAll("caja", "tarjeta");
         tarjeta.setPrefSize(218, 218);
+        tarjeta.setMinWidth(218);
         tarjeta.setOnMouseClicked(e -> {
             DetallePantalla detalle = Navegacion.ir("Detalle.fxml");
             detalle.cargar(s);

@@ -27,6 +27,9 @@ public class LoginPantalla {
             Navegacion.ir("Panel.fxml");
         } catch (ValidacionException | DatosException e) {
             lblError.setText(e.getMessage());
+            // El hueco del error solo aparece cuando hay un error
+            lblError.setVisible(true);
+            lblError.setManaged(true);
         }
     }
 

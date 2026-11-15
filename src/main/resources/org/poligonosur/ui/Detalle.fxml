@@ -15,7 +15,7 @@
             fx:controller="org.poligonosur.ui.DetallePantalla">
    <top>
       <!-- Cabecera -->
-      <HBox alignment="CENTER_LEFT" prefHeight="60.0">
+      <HBox alignment="CENTER_LEFT" prefHeight="60.0" styleClass="cabecera">
          <padding><Insets left="40.0" right="40.0" /></padding>
          <Label text="Gestor de suscripciones" />
       </HBox>
@@ -23,42 +23,42 @@
    <center>
       <VBox spacing="12.0">
          <padding><Insets bottom="24.0" left="40.0" right="40.0" top="24.0" /></padding>
-         <Label text="Detalle de suscripción" />
+         <Label styleClass="titulo" text="Detalle de suscripción" />
 
          <!-- Resumen de la suscripción -->
-         <VBox spacing="8.0">
+         <VBox spacing="8.0" styleClass="caja">
             <padding><Insets bottom="16.0" left="16.0" right="16.0" top="16.0" /></padding>
             <HBox>
-               <Label fx:id="lblServicio" />
+               <Label fx:id="lblServicio" styleClass="subtitulo" />
                <Pane HBox.hgrow="ALWAYS" />
-               <Label fx:id="lblEstado" />
+               <Label fx:id="lblEstado" styleClass="secundario" />
             </HBox>
             <HBox spacing="56.0">
                <VBox prefWidth="210.0" spacing="4.0">
-                  <Label text="Importe" />
-                  <Label fx:id="lblImporte" />
+                  <Label styleClass="secundario" text="Importe" />
+                  <Label fx:id="lblImporte" styleClass="dato" />
                </VBox>
                <VBox prefWidth="210.0" spacing="4.0">
-                  <Label text="Periodicidad" />
-                  <Label fx:id="lblPeriodicidad" />
+                  <Label styleClass="secundario" text="Periodicidad" />
+                  <Label fx:id="lblPeriodicidad" styleClass="dato" />
                </VBox>
                <VBox prefWidth="210.0" spacing="4.0">
-                  <Label text="Próximo cobro" />
-                  <Label fx:id="lblProximoCobro" />
+                  <Label styleClass="secundario" text="Próximo cobro" />
+                  <Label fx:id="lblProximoCobro" styleClass="dato" />
                </VBox>
             </HBox>
          </VBox>
 
          <!-- Acciones -->
          <HBox spacing="12.0">
-            <Button onAction="#registrarPago" text="Registrar pago" />
+            <Button onAction="#registrarPago" styleClass="boton-principal" text="Registrar pago" />
             <Button onAction="#modificar" text="Modificar" />
             <Button fx:id="btnPausar" onAction="#pausar" text="Pausar" />
             <Button onAction="#cancelar" text="Cancelar" />
          </HBox>
 
          <!-- Historial de pagos -->
-         <Label text="Historial de pagos" />
+         <Label styleClass="subtitulo" text="Historial de pagos" />
          <TableView fx:id="tablaPagos" VBox.vgrow="ALWAYS">
             <columns>
                <TableColumn fx:id="colFecha" prefWidth="340.0" text="Fecha" />
